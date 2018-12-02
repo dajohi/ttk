@@ -1,14 +1,12 @@
 language: go
 go:
-  - 1.9.x
-  - 1.10.x
+  - 1.11.x
 sudo: false
 install:
-  - go get -d -t -v ./...
   - go get -v github.com/alecthomas/gometalinter
   - gometalinter --install
 script:
-  - export PATH=$PATH:$HOME/gopath/bin
+  - export GO111MODULE=on
   - ./goclean.sh
 after_success:
   - go get -v github.com/mattn/goveralls
